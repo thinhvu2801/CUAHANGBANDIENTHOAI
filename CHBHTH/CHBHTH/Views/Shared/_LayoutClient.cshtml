@@ -1,0 +1,133 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link href="/Home/css/styles.css" rel="stylesheet" />
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="~/css/styles.css" rel="stylesheet" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    @{ var u = Session["use"] as CHBHDT63131330.Models.TaiKhoan; }
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
+        <div class="container">
+            @Html.ActionLink("SHOPDT", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"> </span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item mx-0 mx-lg-1"> @Html.ActionLink("Giới thiệu", "About", "Home", new { area = "" }, new { @class = "nav-link py-3 px-0 px-lg-3 rounded" }) </li>
+                    <li class="nav-item mx-0 mx-lg-1 dropdown">@Html.ActionLink("Sản phẩm", "index", "sanpham", new { area = "" }, new { @class = "nav-link py-3 px-0 px-lg-3 rounded" }) </li>
+       
+                    
+                    <li class="nav-item mx-0 mx-lg-1"> @Html.ActionLink("Tin tức", "index", "tintuc", new { area = "" }, new { @class = "nav-link py-3 px-0 px-lg-3 rounded" }) </li>
+                    <li class="nav-item mx-0 mx-lg-1"> @Html.ActionLink("Liên hệ", "Contact", "Home", new { area = "" }, new { @class = "nav-link py-3 px-0 px-lg-3 rounded" }) </li>              
+                </ul>
+
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item mx-0 mx-lg-1">  @Html.Action("GioHangPartial", "GioHang", new { @class = "giohang" }) </li>
+                </ul>
+
+                <ul class="navbar-nav ms-auto ">
+                    @{ if (u != null)
+                        {
+                            <li class="nav-item mx-0 mx-lg-1">
+                                <a style="color:white" href="@Url.Action("Profile", "User", new { id = u.MaNguoiDung  })"> Xin chào : @u.Email</a>
+                                <br />
+                                <a style="color:red" href="/User/DangXuat"> ĐĂNG XUẤT</a>
+                            </li>
+
+                        }
+                        else
+                        {
+                            <td class="nav-item mx-0 mx-lg-1"> @Html.ActionLink("Đăng nhập", "Dangnhap", "User", new { area = "" }, new { @class = "nav-link py-3 px-0 px-lg-3 rounded" }) </td>
+
+                        } }
+                </ul>
+            </div>
+      </div>
+            </nav>
+            <div class="container body-content">
+                @RenderBody()
+                <hr />
+            </div>
+
+            @Scripts.Render("~/bundles/jquery")
+            @Scripts.Render("~/bundles/bootstrap")
+            @RenderSection("scripts", required: false)
+        </body>
+
+        <!-- Footer-->
+        <footer class="text-bg-success" style="padding-left:50px">
+            <div class="row">
+                <div class="col-md-3 col-sm-6">
+                    <h2>Chính sách</h2>
+                    <span>Chính sách mua hàng</span>
+                    <br />
+                    <span>Chính sách khách hàng</span>
+                    <br />
+                    <span>Chính sách giao hàng</span>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <h2>Liên kết</h2>
+                    <span>Tin tức</span>
+                    <br />
+                    <span>Tuyển dụng</span>
+                    <br />
+                    <span>Hướng dẫn mua hàng</span>
+                    <br />
+                    <span>Hỏi đáp</span>
+
+
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <h2>Thông tin</h2>
+                    <span>Về chúng tôi</span>
+                    <br />
+                    <span>Liên hệ</span>
+                    <br />
+                    <span>Góp ý</span>
+                    <br />
+                    <span>Tra cứu</span>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <h2>Theo dõi</h2>
+                    <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-facebook-f"></i></a>
+                    <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-twitter"></i></a>
+                    <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-linkedin-in"></i></a>
+                    <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-dribbble"></i></a>
+
+                </div>
+            </div>
+            <hr />
+            <!-- Copyright Section-->
+            <div class="copyright py-4 text-center text-white">
+                <div class="container"><small>Copyright &copy; SHOP DIEN THOAI by VMT </small></div>
+            </div>
+        </footer>
+
+        <script src="~/Content/ckeditor/ckfinder/ckfinder.js"></script>
+
+        <script src="~/Content/ckeditor/ckeditor.js"></script>
+
+        <script src="~/Content/ckeditor/adapters/jquery.js"></script>
+
+
+        <script>
+        </script>
+
+        @RenderSection("DoanJS", false)
+    </html>

@@ -1,0 +1,64 @@
+﻿@model IEnumerable<CHBHDT63131330.Models.ChiTietDonHang>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Chi tiết đơn hàng</h2>
+
+<p>
+    @Html.ActionLink("Tạo chi tiết đơn hàng", "Create")
+</p>
+<table class="table table-bordered">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DonHang.DiaChiNhanHang)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SanPham.TenSP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SoLuong)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DonGia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ThanhTien)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PhuongThucThanhToan)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DonHang.DiaChiNhanHang)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SanPham.TenSP)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SoLuong)
+        </td>
+        <td>
+            @String.Format("{0:0,0}", item.DonGia) VNĐ
+        </td>
+        <td>
+            @String.Format("{0:0,0}", item.ThanhTien) VNĐ
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PhuongThucThanhToan)
+        </td>
+        <td>
+            <button class="btn btn-primary">
+                @Html.ActionLink("Xem", "Details", new { id = item.CTMaDon }, new { @style = "color:white;" })
+            </button>
+        </td>
+    </tr>
+}
+
+</table>

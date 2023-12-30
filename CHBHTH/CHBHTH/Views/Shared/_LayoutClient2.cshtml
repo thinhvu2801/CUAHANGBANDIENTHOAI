@@ -1,0 +1,146 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="~/Content/style.css" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>@ViewBag.Title</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+    <!-- Bootstrap icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/css/styles.css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    @{ var u = Session["use"] as CHBHDT63131330.Models.TaiKhoan; }
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-light text-bg-light">
+        <div class="container px-4 px-lg-5">
+            @Html.ActionLink("SHOPDT", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                    <li class="nav-item"> @Html.ActionLink("Trang chủ", "Index", "Home", new { area = "" }, new { @class = "nav-link activ" })</li>
+                    <li class="nav-item"> @Html.ActionLink("Giới thiệu", "About", "Home", new { area = "" }, new { @class = "nav-link activ" })</li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Sản phẩm </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li> @Html.ActionLink("Toàn bộ sản phẩm", "index", "sanpham", new { area = "" }, new { @class = "dropdown-item" }) </li>
+
+                            <li><hr class="dropdown-divider" /></li>
+                            <li> @Html.Action("danhmucpartial", "danhmuc", new { @class = "dropdown-item" }) </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"> @Html.ActionLink("Tin tức", "Index", "tintuc", new { area = "" }, new { @class = "nav-link activ" })</li>
+                    <li class="nav-item"> @Html.ActionLink("Liên hệ", "Contact", "Home", new { area = "" }, new { @class = "nav-link activ" })</li>
+                </ul>
+                <form class="d-flex">
+                    <button class="btn btn-outline-secondary" type="submit">
+                        @Html.Action("GioHangPartial", "GioHang", new { @class = "giohang" })
+                    </button>
+                    <ul class="navbar-nav ms-auto ">
+                        @{ if (u != null)
+                            {
+                                <li class="nav-item mx-0 mx-lg-1">
+                                    <a style="color:black" href="@Url.Action("Profile", "User", new { id = u.MaNguoiDung  })"> Xin chào : @u.Email</a>
+                                    <br />
+                                    <a style="color:red" href="/User/DangXuat"> ĐĂNG XUẤT</a>
+                                </li>
+
+                            }
+                            else
+                            {
+                                <td class="nav-item mx-0 mx-lg-1"> @Html.ActionLink("Đăng nhập", "Dangnhap", "User", new { area = "" }, new { @class = "nav-link py-3 px-0 px-lg-3 rounded" }) </td>
+
+                            } }
+                    </ul>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Footer-->
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+
+    @RenderBody()
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+
+<!-- Footer-->
+<footer class="text-bg-success" style="padding-left:50px">
+    <div class="row">
+        <div class="col-md-3 col-sm-6">
+            <h2>Chính sách</h2>
+            <span>Chính sách mua hàng</span>
+            <br />
+            <span>Chính sách khách hàng</span>
+            <br />
+            <span>Chính sách giao hàng</span>
+        </div>
+        <div class="col-md-3 col-sm-6">
+            <h2>Liên kết</h2>
+            <span>Tin tức</span>
+            <br />
+            <span>Tuyển dụng</span>
+            <br />
+            <span>Hướng dẫn mua hàng</span>
+            <br />
+            <span>Hỏi đáp</span>
+
+
+        </div>
+        <div class="col-md-3 col-sm-6">
+            <h2>Thông tin</h2>
+            <span>Về chúng tôi</span>
+            <br />
+            <span>Liên hệ</span>
+            <br />
+            <span>Góp ý</span>
+            <br />
+            <span>Tra cứu</span>
+        </div>
+        <div class="col-md-3 col-sm-6">
+            <h2>Theo dõi</h2>
+            <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-facebook-f"></i></a>
+            <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-twitter"></i></a>
+            <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-linkedin-in"></i></a>
+            <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-dribbble"></i></a>
+
+        </div>
+    </div>
+    <hr />
+    <!-- Copyright Section-->
+    <div class="copyright py-4 text-center text-white">
+        <div class="container"><small>Copyright &copy; Shop bán điện thoại xịn!</small></div>
+    </div>
+</footer>
+<script src="~/Content/js/scripts.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src="~/Content/ckeditor/ckfinder/ckfinder.js"></script>
+
+<script src="~/Content/ckeditor/ckeditor.js"></script>
+
+<script src="~/Content/ckeditor/adapters/jquery.js"></script>
+
+
+<script>
+</script>
+
+@RenderSection("DoanJS", false)
+</html>

@@ -1,0 +1,83 @@
+﻿@model CHBHDT63131330.Models.SanPham
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Chi tiết sản phẩm</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.LoaiHang.TenLoai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LoaiHang.TenLoai)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NhaCungCap.TenNCC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NhaCungCap.TenNCC)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TenSP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenSP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GiaBan)
+        </dt>
+
+        <dd>
+            @String.Format("{0:0,0}", Model.GiaBan) VNĐ
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Soluong)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Soluong)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MoTa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MoTa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AnhSP)
+        </dt>
+
+        <dd>
+            <img src="~/Images/iphone.jpg" width="200px" height="200px" />
+            @* @Html.DisplayFor(model => model.AnhSP) *@
+        </dd>
+
+    </dl>
+</div>
+<button class="btn btn-danger">
+    @Html.ActionLink("Xóa", "Delete", new { id = Model.MaSP }, new { @style = "color:white;" })
+</button>
+
+<button class="btn btn-success">
+    @Html.ActionLink("Sửa", "Edit", new { id = Model.MaSP }, new { @style = "color:white;" })
+</button>
+<br />
+<br />
+<p>
+    @Html.ActionLink("Trở về", "Index")
+</p>

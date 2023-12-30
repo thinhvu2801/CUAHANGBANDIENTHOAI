@@ -1,0 +1,74 @@
+﻿@model CHBHDT63131330.Models.TaiKhoan
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Xóa tài khoản</h2>
+
+<div>
+    <h4>TaiKhoan</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PhanQuyen.TenQuyen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhanQuyen.TenQuyen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HoTen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HoTen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Dienthoai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Dienthoai)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Matkhau)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Matkhau)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Diachi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Diachi)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-danger" />
+        </div>
+    }
+    <br />
+    @Html.ActionLink("Trở về", "Index")
+</div>

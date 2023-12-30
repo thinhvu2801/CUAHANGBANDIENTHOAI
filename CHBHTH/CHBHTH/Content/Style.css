@@ -1,0 +1,61 @@
+﻿
+/* Header Styles */
+header {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+}
+
+    header img {
+        max-width: 100%;
+        height: auto;
+    }
+
+/* Featured Images Styles */
+.spnoibat {
+    margin-top: 20px;
+}
+
+    .spnoibat img {
+        border: 2px solid #ddd;
+        border-radius: 8px;
+        margin-bottom: 15px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+        .spnoibat img:hover {
+            transform: scale(1.05);
+            transition: transform 0.3s ease-in-out;
+        }
+
+/* Centered Content Styles */
+.text-center {
+    text-align: center;
+}
+
+/* Responsive Design */
+img.img-responsive {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Vibrant Colors */
+body {
+    background-color: #f8f9fa;
+    color: #343a40;
+}
+
+/* Animations (Optional) */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.spnoibat img {
+    animation: fadeIn 1s ease-in-out;
+}

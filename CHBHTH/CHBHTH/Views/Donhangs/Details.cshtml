@@ -1,0 +1,50 @@
+﻿@model IEnumerable<CHBHDT63131330.Models.ChiTietDonHang>
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutClient2.cshtml";
+}
+
+<center>
+    <h2>Chi tiết đơn hàng</h2>
+
+    <table class="table">
+        <tr>
+            <th>
+                Sản phẩm
+            </th>
+            <th>
+                Số lượng
+            </th>
+            <th>
+                Đơn giá / 1 sản phẩm
+            </th>
+            <th>
+                Thành tiền
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SanPham.TenSP)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SoLuong)
+                </td>
+                <td>
+                    @String.Format("{0:0,0}", item.DonGia) VNĐ
+                </td>
+                <td>
+                    @String.Format("{0:0,0}", item.ThanhTien) VNĐ
+                </td>
+            </tr>
+        }
+
+    </table>
+
+<button class="btn btn-secondary">
+    @Html.ActionLink("Trở về", "Index", "Donhangs", new { area = "" }, new { @class = "nav-link py-1 px-0 px-lg-1 rounded" })
+</button>
+</center> <br />

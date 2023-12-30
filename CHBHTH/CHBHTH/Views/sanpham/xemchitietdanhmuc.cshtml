@@ -1,0 +1,47 @@
+﻿@using CHBHDT63131330.Models;
+@model List<SanPham>
+
+@{
+    ViewBag.Title = "xemchitietdanhmuc";
+    Layout = "~/Views/Shared/_LayoutClient2.cshtml";
+}
+
+
+<section class="py-1">
+    <center> <h3> Danh mục sản phẩm </h3> </center>
+    <div class="container px-4 px-lg-5 mt-5">
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+            @foreach (var item in Model)
+            {
+                <div class="col mb-5">
+                    <div class="card h-100">
+                        <!-- Product image-->
+                        <a href="@Url.Action("xemchitiet", new {@MaSP=item.MaSP })">
+                            <center>
+                                <img src=@Url.Content("~/Images/iphone.jpg") class="img-responsive" alt="" width="200" height="150" />
+                            </center>
+                        </a>
+                        <!-- Product details-->
+                        <div class="card-body p-4">
+                            <div class="text-center">
+                                <!-- Product name-->
+                                <h5 class="fw-bolder">@item.TenSP</h5>
+                                <!-- Product price-->
+                                Giá: @String.Format("{0:0,0}", @item.GiaBan) VND
+                            </div>
+                        </div>
+                        <!-- Product actions-->
+                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                            <div class="text-center">
+                                @using (Html.BeginForm("ThemGioHang", "GioHang", new { @iMaSP = item.MaSP, @strURL = Request.Url.ToString() }))
+                                {
+                                    <input type="submit" value="Thêm vào giỏ hàng" id="bgnGioHang" class="btn btn-outline-dark mt-auto" />
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>

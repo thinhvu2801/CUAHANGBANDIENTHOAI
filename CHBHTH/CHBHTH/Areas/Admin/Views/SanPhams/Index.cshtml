@@ -1,0 +1,75 @@
+﻿@model IEnumerable<CHBHDT63131330.Models.SanPham>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    var grid = new WebGrid(Model, canPage: true, defaultSort: "id", rowsPerPage: 5);
+}
+
+<h2>Sản phẩm</h2>
+
+<p>
+    @Html.ActionLink("Tạo sản phẩm", "Create")
+</p>
+<div>
+    @using (Html.BeginForm("Index", "SanPhams", FormMethod.Get))
+    {
+        <input type="text" name="searchString" placeholder="Nhập tên sản phẩm cần tìm" value="@ViewBag.SearchString" />
+        <button type="submit">Search</button>
+    }
+</div>
+<div class="grid-container">
+    @grid.GetHtml(
+        tableStyle: "table table-bordered",
+        headerStyle: "webgrid-header",
+        footerStyle: "webgrid-footer",
+        alternatingRowStyle: "webgrid-alternating-row",
+        selectedRowStyle: "webgrid-selected-row",
+        rowStyle: "webgrid-row-style",
+        columns: grid.Columns(
+            grid.Column("TenSP", header: "Tên Sản Phẩm", style: ""),
+            grid.Column("LoaiHang.TenLoai", header: "Loại Hàng", style: ""),
+            grid.Column("NhaCungCap.TenNCC", header: "Nhà Cung Cấp", style: ""),
+            grid.Column("GiaBan", header: "Giá Bán", style: ""),
+            grid.Column("Soluong", header: "Số Lượng", style: ""),
+            grid.Column("MoTa", header: "Mô Tả", style: ""),
+            grid.Column(header: "", format: @<text>
+                    @Html.ActionLink("Xem", "Details", new { id = item.MaSP }, new { @style = "color: blue;" })
+            </text>)
+)
+)
+</div>
+<style>
+    .unclickable-header {
+        pointer-events: none;
+        cursor: default;
+    }
+
+    .webgrid-footer a {
+        display: inline-block;
+        padding: 6px 12px;
+        margin: 2px;
+        font-size: 16px;
+        line-height: 1.5;
+        background-color: #007bff;
+        border: 1px solid #007bff;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 4px;
+    }
+
+    .webgrid-footer .webgrid-page {
+        margin: 2px;
+    }
+
+    .webgrid-footer a:hover {
+        background-color: #0056b3;
+        border-color: #0056b3;
+    }
+
+    .webgrid-footer .webgrid-selected-page {
+        background-color: #0056b3;
+        border-color: #0056b3;
+        color: #fff;
+    }
+</style>

@@ -1,0 +1,34 @@
+﻿@using CHBHDT63131330.Models
+@model  SanPham
+
+@{
+    ViewBag.Title = "xemchitiet";
+    Layout = "~/Views/Shared/_LayoutClient2.cshtml";
+}
+<section class="py-0">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="row gx-4 gx-lg-5 align-items-center">
+            <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="@Url.Content("~/Images/iphone.jpg" )" alt="" /></div>
+            <div class="col-md-6">
+                <div class="small mb-1">Loại hàng:  @Model.LoaiHang.TenLoai</div>
+                <div class="small mb-1">Nhà cung cấp: @Model.NhaCungCap.TenNCC</div>
+                <h1 class="display-5 fw-bolder">@Model.TenSP </h1>
+                <div class="fs-5 mb-5">
+                    <span> Giá: @String.Format("{0:0,0}", @Model.GiaBan) VNĐ </span>
+                </div>
+                Mô tả sản phẩm:
+                <p class="lead"> @Model.MoTa </p>
+                <div class="d-flex">
+                   
+                        @using (Html.BeginForm("ThemGioHang", "GioHang", new { @iMaSP = Model.MaSP, @strURL = Request.Url.ToString() }))
+                        {
+                            <i class="bi-cart-fill me-1"></i>
+                            <input type="submit" value="Thêm vào giỏ hàng" id="bgnGioHang" class="btn btn-outline-dark flex-shrink-0" />
+
+                        }
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

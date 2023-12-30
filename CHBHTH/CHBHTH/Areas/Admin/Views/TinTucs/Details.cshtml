@@ -1,0 +1,38 @@
+﻿@model CHBHDT63131330.Models.TinTuc
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Chi tiết tin tức</h2>
+<button class="btn btn-success">
+    @Html.ActionLink("Sửa", "Edit", new { id = Model.MaTT }, new { @style = "color:white;" })
+</button>
+<br />
+<br />
+<p>
+    @Html.ActionLink("Trở về", "Index")
+</p>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TieuDe)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TieuDe)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NoiDung)
+        </dt>
+
+        <dd>
+            @Html.Raw(Model.NoiDung)
+        </dd>
+
+    </dl>
+</div>
+

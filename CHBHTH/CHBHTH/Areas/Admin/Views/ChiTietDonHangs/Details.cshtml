@@ -1,0 +1,73 @@
+﻿@model CHBHDT63131330.Models.ChiTietDonHang
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Chi tiết chi tiết đơn hàng</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DonHang.DiaChiNhanHang)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DonHang.DiaChiNhanHang)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SanPham.TenSP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SanPham.TenSP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SoLuong)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoLuong)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DonGia)
+        </dt>
+
+        <dd>
+            @String.Format("{0:0,0}", Model.DonGia) VNĐ
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ThanhTien)
+        </dt>
+
+        <dd>
+            @String.Format("{0:0,0}", Model.ThanhTien) VNĐ
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhuongThucThanhToan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhuongThucThanhToan)
+        </dd>
+    </dl>
+</div>
+<button class="btn btn-success">
+    @Html.ActionLink("Sửa", "Edit", new { id = Model.CTMaDon }, new { @style = "color:white;" })
+</button>
+
+<button class="btn btn-danger">
+    @Html.ActionLink("Xóa", "Delete", new { id = Model.CTMaDon }, new { @style = "color:white;" })
+</button>
+<br />
+<br />
+<p>
+    @Html.ActionLink("Trở về", "Index")
+</p>

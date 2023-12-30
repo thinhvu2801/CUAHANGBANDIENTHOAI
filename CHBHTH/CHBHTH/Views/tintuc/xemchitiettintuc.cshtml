@@ -1,0 +1,15 @@
+﻿@using CHBHDT63131330.Models
+@model  TinTuc
+
+@{
+    ViewBag.Title = "xemchitiet";
+    Layout = "~/Views/Shared/_LayoutClient2.cshtml";
+}
+<br />
+
+<CENTER>
+    <div>
+        <h2>  @Model.TieuDe </h2>
+    </div>
+    <p> @Html.Raw(Model.NoiDung) </p>
+</CENTER>

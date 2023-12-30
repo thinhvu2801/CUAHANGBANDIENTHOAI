@@ -1,0 +1,17 @@
+﻿@using CHBHDT63131330.Models;
+@model List<TinTuc>
+
+<div class="row">
+    <h3 style="padding-left:20px"> Tin Tức </h3>
+    @foreach (var item in Model)
+    {
+        <div class="col-md-3 col-sm-6">
+            <br />
+            <center>
+                <a href="@Url.Action("xemchitiettintuc", new {@MaTT=item.MaTT })">
+                    <h6> @item.TieuDe</h6>
+                </a>
+            </center>
+        </div>
+    }
+</div>

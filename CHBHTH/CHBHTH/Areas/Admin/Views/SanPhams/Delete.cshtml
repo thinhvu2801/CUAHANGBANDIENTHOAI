@@ -1,0 +1,81 @@
+﻿@model CHBHDT63131330.Models.SanPham
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Xóa sản phẩm</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.LoaiHang.TenLoai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LoaiHang.TenLoai)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NhaCungCap.TenNCC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NhaCungCap.TenNCC)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TenSP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenSP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GiaBan)
+        </dt>
+
+        <dd>
+            @String.Format("{0:0,0}", Model.GiaBan) VNĐ
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Soluong)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Soluong)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MoTa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MoTa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AnhSP)
+        </dt>
+
+        <dd>
+            <img src="@Html.DisplayFor(model => model.AnhSP)" width="200px" height="200px" />
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-danger" />
+        </div>
+    }
+    <br />
+    @Html.ActionLink("Trở về", "Index")
+</div>

@@ -1,0 +1,138 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
+        <div class="container">
+            @Html.ActionLink("VMT", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
+                <ul class="navbar-nav flex-grow-1">
+                    <li>
+                        <div class="dropdown">
+                            <button class="dropbtn">Quản trị</button>
+                            <div class="dropdown-content">
+                                @Html.ActionLink("Tài khoản", "Index", "TaiKhoans", new { area = "Admin" }, new { @class = "nav-link" })
+                                @Html.ActionLink("Phân quyền", "Index", "PhanQuyens", new { area = "Admin" }, new { @class = "nav-link" })
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="dropdown">
+                            <button class="dropbtn">Sản phẩm</button>
+                            <div class="dropdown-content">
+                                @Html.ActionLink("Sản phẩm", "Index", "SanPhams", new { area = "Admin" }, new { @class = "nav-link" })
+                                @Html.ActionLink("Nhà cung cấp", "Index", "NhaCungCaps", new { area = "Admin" }, new { @class = "nav-link" })
+                                @Html.ActionLink("Loại hàng", "Index", "LoaiHangs", new { area = "Admin" }, new { @class = "nav-link" })
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="dropdown">
+                            <button class="dropbtn">Đơn hàng</button>
+                            <div class="dropdown-content">
+                                @Html.ActionLink("Đơn hàng", "Index", "DonHangs", new { area = "Admin" }, new { @class = "nav-link" })
+                                @Html.ActionLink("Chi tiết đơn hàng", "Index", "ChiTietDonHangs", new { area = "Admin" }, new { @class = "nav-link" })
+                                @Html.ActionLink("Thống kê", "Index", "ThongKes", new { area = "Admin" }, new { @class = "nav-link" })
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="dropdown">
+                            <button class="dropbtn">Tin tức </button>
+                            <div class="dropdown-content">
+                                @Html.ActionLink("Tin tức", "Index", "TinTucs", new { area = "Admin" }, new { @class = "nav-link" })
+                                @Html.ActionLink("Sự kiện", "Index", "TinTucs", new { area = "Admin" }, new { @class = "nav-link" })
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Cửa hàng điện thoại SHOPDT by VMT</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+
+<script src="~/Content/ckeditor/ckfinder/ckfinder.js"></script>
+
+<script src="~/Content/ckeditor/ckeditor.js"></script>
+
+<script src="~/Content/ckeditor/adapters/jquery.js"></script>
+
+
+<script>
+</script>
+
+@RenderSection("DoanJS", false)
+
+<style>
+    /* Dropdown Button */
+    .dropbtn {
+        background-color: #04AA6D;
+        color: white;
+        padding: 10px;
+        margin: 5px;
+        font-size: 16px;
+        border: none;
+    }
+
+    /* The container <div> - needed to position the dropdown content */
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    /* Dropdown Content (Hidden by Default) */
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f1f1f1;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+    }
+
+        /* Links inside the dropdown */
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+            /* Change color of dropdown links on hover */
+            .dropdown-content a:hover {
+                background-color: #ddd;
+            }
+
+    /* Show the dropdown menu on hover */
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    /* Change the background color of the dropdown button when the dropdown content is shown */
+    .dropdown:hover .dropbtn {
+        background-color: #3e8e41;
+    }
+</style>
+</html>

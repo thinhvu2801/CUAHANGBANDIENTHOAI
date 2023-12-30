@@ -1,0 +1,30 @@
+﻿@model CHBHDT63131330.Models.NhaCungCap
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Chi tiết nhà cung cấp</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TenNCC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenNCC)
+        </dd>
+
+    </dl>
+</div>
+<button class="btn btn-success">
+    @Html.ActionLink("Sửa", "Edit", new { id = Model.MaNCC }, new { @style = "color:white;" })
+</button>
+<br />
+<br />
+<p>
+    @Html.ActionLink("Trở về", "Index")
+</p>

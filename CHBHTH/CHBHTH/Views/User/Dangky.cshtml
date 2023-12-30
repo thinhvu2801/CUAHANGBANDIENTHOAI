@@ -1,0 +1,83 @@
+﻿@model CHBHDT63131330.Models.TaiKhoan
+
+@{ ViewBag.Title = "Dangky";
+    var useReg = Session["useReg"] as CHBHDT63131330.Models.TaiKhoan;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Login - SB Admin</title>
+    <link href="css/styles.css" rel="stylesheet" />
+    <link href="~/Content/css/styles.css" rel="stylesheet" />
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+</head>
+<body class="bg-primary">
+    <div id="layoutAuthentication">
+        <div id="layoutAuthentication_content">
+            <main>
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-5">
+                            <div class="card shadow-lg border-0 rounded-lg mt-5">
+                                <div class="card-header"><h3 class="text-center font-weight-light my-4"> Đăng ký tài khoản </h3></div>
+                                <div class="card-body">
+                                    @using (Html.BeginForm("Dangky", "User", FormMethod.Post))
+                                    {
+                                        @Html.AntiForgeryToken()
+                                        <authentication mode="Forms">
+                                            <form class="form-group">
+                                                <div class="form-floating mb-3">
+                                                    @Html.EditorFor(model => model.HoTen, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.HoTen, "", new { @class = "text-danger" })
+                                                    <label for="inputPassword"> Họ & tên</label>
+                                                </div>
+                                                <div class="form-floating mb-3">
+                                                    @Html.EditorFor(model => model.Dienthoai, new { htmlAttributes = new {type = "number", @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.Dienthoai, "", new { @class = "text-danger" })
+                                                    <label for="inputPassword"> Số điện thoại </label>
+                                                </div>
+                                                <div class="form-floating mb-3">
+                                                    @Html.EditorFor(model => model.Diachi, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.Diachi, "", new { @class = "text-danger" })
+                                                    <label for="inputPassword">Địa chỉ</label>
+                                                </div>
+                                                <div class="form-floating mb-3">
+                                                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new {type = "Email" ,@class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                                    <label for="inputPassword">Email</label>
+                                                </div>
+                                                <div class="form-floating mb-3">
+                                                    @Html.EditorFor(model => model.Matkhau, new { htmlAttributes = new { type = "Password", @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.Matkhau, "", new { @class = "text-danger" })
+                                                    <label for="inputPassword">Mật khẩu</label>
+                                                </div>
+                                                <p class="text-danger">@ViewBag.RegOk</p>
+                                                <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
+                                                    <p></p>
+                                                    <input type="submit" value="Đăng ký" class="btn btn-primary" />
+                                                </div>
+                                            </form>
+                                        </authentication>
+                                    }
+                                </div>
+                                <div class="card-footer text-center py-3">
+                                    <div class="small"><a href="/User/Dangnhap">Quay về trang đăng nhập!</a></div>
+                                </div> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="js/scripts.js"></script>
+</body> <br />
+</html>
+

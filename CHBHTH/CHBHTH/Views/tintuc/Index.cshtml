@@ -1,0 +1,32 @@
+﻿@model IEnumerable<CHBHDT63131330.Models.TinTuc>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutClient2.cshtml";
+}
+
+<center> <h2>Tin tức</h2> </center>
+
+<table class="table table-bordered">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TieuDe)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TieuDe)
+            </td>
+            <td>
+                <button class="btn btn-primary">
+                    @Html.ActionLink("Xem", "xemchitiettintuc", new { @MaTT = item.MaTT }, new { @style = "color:white;" })
+                </button>
+            </td>
+        </tr>
+    }
+
+</table>

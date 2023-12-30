@@ -1,0 +1,30 @@
+﻿@model CHBHDT63131330.Models.LoaiHang
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Chi tiết loại hàng</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TenLoai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenLoai)
+        </dd>
+
+    </dl>
+</div>
+<button class="btn btn-success">
+    @Html.ActionLink("Sửa", "Edit", new { id = Model.MaLoai }, new { @style = "color:white;" })
+</button>
+<br />
+<br />
+<p>
+    @Html.ActionLink("Trở về", "Index")
+</p>

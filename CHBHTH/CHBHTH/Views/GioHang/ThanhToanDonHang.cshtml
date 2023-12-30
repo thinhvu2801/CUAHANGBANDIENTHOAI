@@ -1,0 +1,80 @@
+﻿@model CHBHDT63131330.Models.DonHang
+
+@{
+    ViewBag.Title = "ThanhToanDonHang";
+    Layout = "~/Views/Shared/_LayoutClient2.cshtml";
+}
+
+<center>
+    <h2>Trang thanh toán</h2>
+
+    @using (Html.BeginForm("DatHang", "GioHang", new { @class = "" }))
+    {
+        @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.MaDon)
+
+    <div class="form-group">
+        <div class="control-label col-md-3 Bold"> <b> 	Tên người đặt hàng  </b></div>
+        <div class="col-md-9">
+            @Html.DropDownList("MaNguoidung", null, htmlAttributes: new { @class = "form-control", @readonly = "readonly", Enabled = "False", @disabled = "disabled" })
+            @Html.ValidationMessageFor(model => model.MaNguoiDung, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <br />
+    <div class="form-group">
+        <div class="control-label col-md-3 Bold"> <b> 	Ngày đặt</b></div>
+        <div class="col-md-9">
+            @Html.EditorFor(model => model.NgayDat, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+            @Html.ValidationMessageFor(model => model.NgayDat, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <br />
+    <div class="form-group">
+        <div class="control-label col-md-3 Bold"> <b> 	Tổng tiền thanh toán  </b></div>
+
+        <div class="col-md-9">
+            <h3 class="text-danger"> @String.Format("{0:0,0}", @ViewBag.tongtien) VNĐ </h3>
+        </div>
+    </div>
+    <br />
+    <div class="form-group">
+        <div class="control-label col-md-3 Bold"> <b> 	Địa chỉ nhận hàng</b></div>
+        <div class="col-md-9">
+            @Html.EditorFor(model => model.DiaChiNhanHang, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.DiaChiNhanHang, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <br />
+    <div class="form-group">
+        <div class="control-label col-md-3 Bold"> <b> 	Phương thức thanh toán  </b></div>
+
+        <div class="col-md-9">
+            @Html.DropDownList("MaTT", null, htmlAttributes: new { @class = "form-control" })
+        </div>
+    </div>
+    <br />
+    <div class="form-group">
+        <div class="control-label col-md-3 Bold"> <b> 	Ghi chú  </b></div>
+
+        <div class="col-md-9 text-danger">
+            -  Đối với thanh toán bằng tiền mặt. Sản phẩm giao đến quý khách, quý khách kiểm tra sản phẩm sau đó thanh toán cho nhân viên ship.
+            <br />
+            - Đối với thanh toán chuyển khoản:
+            Quý khách chuyển khoản vào tài khoản : 3933366688879. Chủ tài khoản: VU MINH THINH. Ngân hàng MB Bank.
+            <br />
+            - Nội dung chuyển khoản điền theo mẫu: Họ tên , số điện thoại, Thanh toán mua hàng SHOPDT.
+        </div>
+    </div>
+    <br />
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Đặt hàng ngay" class="btn btn-primary" />
+        </div>
+    </div> <br />
+</div>
+    }
+</center>

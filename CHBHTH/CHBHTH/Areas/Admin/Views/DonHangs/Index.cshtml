@@ -1,0 +1,84 @@
+﻿@model IEnumerable<CHBHDT63131330.Models.DonHang>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Đơn hàng</h2>
+
+<p>
+    @Html.ActionLink("Tạo đơn hàng", "Create")
+</p>
+<table class="table table-bordered">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MaDon)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TaiKhoan.HoTen)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NgayDat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TinhTrang)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ThanhToan)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DiaChiNhanHang)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TongTien) 
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.MaDon)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TaiKhoan.HoTen)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NgayDat)
+        </td>
+        <td>
+            @{ if (@item.TinhTrang == 0)
+                {
+                    <div style="color:red">Đang chờ xác nhận. </div> }
+                else if (@item.TinhTrang == 1)
+                {
+                    <div style="color:green">Đã xác nhận  </div> }
+                else
+                {
+                    <div style="color:orangered">Đang chờ xác nhận </div> } }
+      
+        </td>
+        <td>
+            @{ if (@item.ThanhToan == 1)
+                {
+                    <div style="color:red">Thanh toán tiền mặt</div> }
+                else if (@item.ThanhToan == 2)
+                {
+                    <div style="color:brown">Thanh toán chuyển khoản</div> } }
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DiaChiNhanHang)
+        </td>
+        <td>
+            @String.Format("{0:0,0}", item.TongTien) VNĐ
+        </td>
+        <td>
+            <button class="btn btn-primary">
+                @Html.ActionLink("Xem", "Details", new { id = item.MaDon }, new { @style = "color:white;" })
+            </button>
+        </td>
+    </tr>
+}
+
+</table>

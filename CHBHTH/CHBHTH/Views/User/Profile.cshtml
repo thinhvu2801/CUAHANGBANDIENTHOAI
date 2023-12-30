@@ -1,0 +1,69 @@
+﻿@model CHBHDT63131330.Models.TaiKhoan
+
+@{
+    ViewBag.Title = "Profile";
+    Layout = "~/Views/Shared/_LayoutClient2.cshtml";
+}
+
+<center>
+    <h2 class=""> Thông tin cá nhân khách hàng </h2>
+    <br />
+    <table class="table-hover table-bordered divGioHang">
+        <tr style="">
+            <th> Họ & tên</th>
+
+            <th> Email </th>
+
+            <th> Số điện thoại </th>
+
+            <th> Mật khẩu </th>
+
+            <th> Địa chỉ </th>
+
+        </tr>
+
+        <tr class="font-italic">
+            <td>  @Html.DisplayFor(model => model.HoTen)</td>
+
+            <td>  @Html.DisplayFor(model => model.Email) </td>
+
+            <td>  @Html.DisplayFor(model => model.Dienthoai)</td>
+
+            <td>  @Html.DisplayFor(model => model.Matkhau)</td>
+
+            <td>  @Html.DisplayFor(model => model.Diachi)</td>
+        </tr>
+
+
+        <tr>
+            <td colspan="5" style="text-align:right">
+                <button class="btn btn-info">
+                    @Html.ActionLink("Xem đơn hàng", "Index", "Donhangs", new { area = "" }, new { @class = "nav-link py-3 px-0 px-lg-3 rounded" })
+                </button>
+                <button class="btn btn-primary">
+                    @Html.ActionLink("Chỉnh sửa hồ sơ", "Edit", new { id = Model.MaNguoiDung }, new { @class = "nav-link py-3 px-0 px-lg-3 rounded" })
+                </button>
+            </td>
+        </tr>
+    </table>
+</center>
+<br />
+
+@*Css giỏ hàng*@
+<style type="text/css">
+    .divGioHang {
+        border: 2px solid #EEEEEE;
+        margin-left: 10%;
+        font-size: large
+    }
+
+        .divGioHang td {
+            padding: 40px;
+            border: 2px solid #EEEEEE;
+            text-align: center
+        }
+
+        .divGioHang th {
+            text-align: center
+        }
+</style>

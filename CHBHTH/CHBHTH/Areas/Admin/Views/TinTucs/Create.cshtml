@@ -1,0 +1,50 @@
+﻿@model CHBHDT63131330.Models.TinTuc
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Tạo tin tức</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.TieuDe, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TieuDe, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TieuDe, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <br />
+        <div class="form-group">
+            @Html.LabelFor(model => model.NoiDung, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @*Html.EditorFor(model => model.NoiDung, new { htmlAttributes = new { @class = "form-control" } })*@
+                <textarea class="form-control" name="NoiDung" id="inputNoiDung"> </textarea>
+                @Html.ValidationMessageFor(model => model.NoiDung, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <br />
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Tạo" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+}
+<br />
+<div>
+    @Html.ActionLink("Trở về", "Index")
+</div>
+
+@section DoanJS{
+    <script>
+        CKEDITOR.replace('inputNoiDung')
+    </script>    
+}
