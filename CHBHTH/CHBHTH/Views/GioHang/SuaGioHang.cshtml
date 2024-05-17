@@ -32,7 +32,7 @@
 
                 <td> @item.sTensp</td>
 
-                <td> <img src="@Url.Content("~" +item.sAnhBia)" width="100" height="100" /></td>
+                 <td> <img src="@Url.Content("~/Images/iphone.jpg" @*+item.sAnhBia*@)" width="100" height="100" /></td>
 
                 <td>  @String.Format("{0:0,0}", item.dDonGia) VNĐ</td>
 
@@ -43,7 +43,7 @@
 
                     <td>@String.Format("{0:0,0}", item.ThanhTien) VNĐ</td>
                     <td>
-                        <input type="submit" value="Cập nhật" class="btn btn-success"/>
+                        <input type="submit" value="Cập nhật" class="btn btn-success" />
                         <br /> <br />
                         @*Xóa giỏ hàng gọi về Action XoaGioHang*@
                         <button class="btn btn-danger"> @Html.ActionLink("Xóa", "XoaGioHang", new { @iMaSP = item.iMasp }, new { @style = "color:white;" }) </button>

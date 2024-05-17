@@ -108,6 +108,7 @@ values
   (N'Tran Van E', 'tranve@email.com', '321654987', '123456', 1, N'Haiphong'),
   (N'Hoang Thi F', 'hoangthif@email.com', '654789321', '123456', 2, N'Quang Ninh');
   	GO
+
 /*Loại hàng*/
 -- Insert data into LoaiHang table
 INSERT INTO LoaiHang (TenLoai)
@@ -240,3 +241,14 @@ select * from TinTuc
 /*Ràng buộc ĐƠN HÀNG*/
 alter table Course
 add constraint FK_c_u foreign key(LecturerId) references AspNetUsers(Id);
+
+
+ALTER TABLE TaiKhoan
+ADD Quyen nvarchar(20) NULL;
+ALTER TABLE TaiKhoan
+DROP COLUMN Quyen;
+
+UPDATE TaiKhoan
+SET IDQuyen = 1
+WHERE Email = 'Admin@gmail.com';
+ select * from TaiKhoan;
